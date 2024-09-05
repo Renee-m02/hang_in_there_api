@@ -11,7 +11,7 @@ class Api::V1::PostersController < ApplicationController
 
     def create
         new_poster = Poster.create(poster_params)
-        render json: PosterSerializer.format_poster(new_poster)
+        render json: PosterSerializer.format_poster(new_poster), status: 201
     end
 
     def update
@@ -20,7 +20,7 @@ class Api::V1::PostersController < ApplicationController
     end
 
     def destroy
-        render json: Poster.delete(params[:id])
+        render json: Poster.delete(params[:id]), status: 204
     end
     
     private

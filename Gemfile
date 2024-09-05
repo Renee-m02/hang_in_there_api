@@ -40,7 +40,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem "rspec-rails"
   gem "pry"
-  gem "simplecov", require: false, group: :test
+  gem "simplecov"
 end
 
 group :development do
