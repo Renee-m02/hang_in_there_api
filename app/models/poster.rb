@@ -1,3 +1,2 @@
 class Poster < ApplicationRecord
-    
 end
