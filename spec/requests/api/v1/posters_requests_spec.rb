@@ -33,10 +33,9 @@ RSpec.describe "Poster Request" do
 
       get '/api/v1/posters'
 
-      expect(response).to be_successful
-
       posters = JSON.parse(response.body, symbolize_names: true)[:data]
       
+      expect(response).to be_successful
       expect(posters.count).to eq(3)
 
       posters.each do |poster|
@@ -70,19 +69,13 @@ RSpec.describe "Poster Request" do
 
   describe "Fetch one poster" do
     it "can get one poster by its id" do
-      id = Poster.create!(name: "Sadness",
-      description: "Hard work rarely pays off.",
-      price: 89.00,
-      year: 2018,
-      vintage: true,
-      img_url:  "https://plus.unsplash.com/premium_photo-1661293818249-fddbddf07a5d").id
+      id = @regret.id
     
       get "/api/v1/posters/#{id}"
     
       poster1 = JSON.parse(response.body, symbolize_names: true)[:data]
     
       expect(response).to be_successful  
-
       expect(poster1[:type]).to eq("poster")
 
       expect(poster1).to have_key(:id)
