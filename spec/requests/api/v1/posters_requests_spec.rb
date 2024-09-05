@@ -43,7 +43,7 @@ RSpec.describe "Poster Request" do
         expect(poster[:type]).to eq("poster")
 
         expect(poster).to have_key(:id)
-        expect(poster[:id]).to be_an(Integer)
+        expect(poster[:id]).to be_an(String)
 
         poster = poster[:attributes]
 
@@ -86,7 +86,7 @@ RSpec.describe "Poster Request" do
       expect(poster1[:type]).to eq("poster")
 
       expect(poster1).to have_key(:id)
-      expect(poster1[:id]).to be_an(Integer)
+      expect(poster1[:id]).to be_an(String)
 
       poster1 = poster1[:attributes]
 
