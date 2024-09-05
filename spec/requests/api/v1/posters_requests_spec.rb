@@ -132,12 +132,7 @@ RSpec.describe "Poster Request" do
 
   describe "Update New Poster" do
     it "can update an existing poster" do
-      id = Poster.create!(name: "Sadness",
-      description: "Hard work rarely pays off.",
-      price: 89.00,
-      year: 2018,
-      vintage: true,
-      img_url:  "https://plus.unsplash.com/premium_photo-1661293818249-fddbddf07a5d").id
+      id = @sadness.id
       previous_name = Poster.last.name
       poster_params = {name: "Sadness Take 2"}
       headers = {"CONTENT_TYPE" => "application/json"}
@@ -146,7 +141,6 @@ RSpec.describe "Poster Request" do
       updated_poster = Poster.find_by(id: id)
 
       expect(response).to be_successful
-
       expect(updated_poster.name).to_not eq(previous_name)
       expect(updated_poster.name).to eq("Sadness Take 2")
     end
