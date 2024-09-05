@@ -33,10 +33,9 @@ RSpec.describe "Poster Request" do
 
       get '/api/v1/posters'
 
-      expect(response).to be_successful
-
       posters = JSON.parse(response.body, symbolize_names: true)[:data]
       
+      expect(response).to be_successful
       expect(posters.count).to eq(3)
 
       posters.each do |poster|
@@ -70,19 +69,13 @@ RSpec.describe "Poster Request" do
 
   describe "Fetch one poster" do
     it "can get one poster by its id" do
-      id = Poster.create!(name: "Sadness",
-      description: "Hard work rarely pays off.",
-      price: 89.00,
-      year: 2018,
-      vintage: true,
-      img_url:  "https://plus.unsplash.com/premium_photo-1661293818249-fddbddf07a5d").id
+      id = @regret.id
     
       get "/api/v1/posters/#{id}"
     
       poster1 = JSON.parse(response.body, symbolize_names: true)[:data]
     
       expect(response).to be_successful  
-
       expect(poster1[:type]).to eq("poster")
 
       expect(poster1).to have_key(:id)
@@ -139,12 +132,7 @@ RSpec.describe "Poster Request" do
 
   describe "Update New Poster" do
     it "can update an existing poster" do
-      id = Poster.create!(name: "Sadness",
-      description: "Hard work rarely pays off.",
-      price: 89.00,
-      year: 2018,
-      vintage: true,
-      img_url:  "https://plus.unsplash.com/premium_photo-1661293818249-fddbddf07a5d").id
+      id = @sadness.id
       previous_name = Poster.last.name
       poster_params = {name: "Sadness Take 2"}
       headers = {"CONTENT_TYPE" => "application/json"}
@@ -153,7 +141,6 @@ RSpec.describe "Poster Request" do
       updated_poster = Poster.find_by(id: id)
 
       expect(response).to be_successful
-
       expect(updated_poster.name).to_not eq(previous_name)
       expect(updated_poster.name).to eq("Sadness Take 2")
     end
@@ -161,26 +148,8 @@ RSpec.describe "Poster Request" do
 
   describe "Delete Poster" do
     it "can destroy a poster" do
-      poster1 = Poster.create!(name: "Sadness",
-      description: "Hard work rarely pays off.",
-      price: 89.00,
-      year: 2018,
-      vintage: true,
-      img_url:  "https://plus.unsplash.com/premium_photo-1661293818249-fddbddf07a5d")
-
-      # expect(Poster.count).to eq(4)
-    
-      # delete "/api/v1/posters/#{poster1.id}"
-
-      # expect(response).to be_successful
-      # expect(response.code).to eq("204")
-
-      # expect(Poster.count).to eq(3)
-      # expect{Poster.find(poster1.id) }.to raise_error(ActiveRecord::RecordNotFound)
-
-      expect{ delete "/api/v1/posters/#{poster1.id}" }.to change(Poster, :count).by(-1)
-    
-      expect{ Poster.find(poster1.id) }.to raise_error(ActiveRecord::RecordNotFound)
+      expect{ delete "/api/v1/posters/#{@regret.id}" }.to change(Poster, :count).by(-1)
+      expect{ Poster.find(@regret.id) }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 end
