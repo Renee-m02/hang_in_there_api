@@ -30,9 +30,7 @@ RSpec.describe "Poster Request" do
 
   describe "Fetch All Posters" do
     it "sends a list of posters" do
-
       get '/api/v1/posters'
-
       posters = JSON.parse(response.body, symbolize_names: true)[:data]
       
       expect(response).to be_successful
@@ -70,9 +68,7 @@ RSpec.describe "Poster Request" do
   describe "Fetch one poster" do
     it "can get one poster by its id" do
       id = @regret.id
-    
       get "/api/v1/posters/#{id}"
-    
       poster1 = JSON.parse(response.body, symbolize_names: true)[:data]
     
       expect(response).to be_successful  
@@ -114,7 +110,6 @@ RSpec.describe "Poster Request" do
         "img_url":  "https://unsplash.com/photos/brown-brick-building-with-red-car-parked-on-the-side-mMV6Y0ExyIk"
       }
       headers = { "CONTENT_TYPE" => "application/json" }
-    
       post "/api/v1/posters", headers: headers, params: JSON.generate(poster: poster_params)
       created_poster = Poster.last
 
@@ -150,6 +145,17 @@ RSpec.describe "Poster Request" do
     it "can destroy a poster" do
       expect{ delete "/api/v1/posters/#{@regret.id}" }.to change(Poster, :count).by(-1)
       expect{ Poster.find(@regret.id) }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+  end
+
+  describe "Meta Count" do
+    it "returns the correct count of posters in meta data" do
+      get '/api/v1/posters'
+      meta_data = JSON.parse(response.body, symbolize_names: true)[:meta]
+
+      expect(response).to be_successful
+      expect(meta_data).to have_key(:count)
+      expect(meta_data[:count]).to eq(Poster.count)
     end
   end
 end
