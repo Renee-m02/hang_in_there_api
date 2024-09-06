@@ -9,12 +9,10 @@ class Poster < ApplicationRecord
     end
 
     def self.find_by_params(params)
-        # start with all posts
         all_posters = all
 
-        # apply filtering by name if name is queried
         if params[:name]
-            results = filter_by_name(all_posters, params[:name]) #if params[:name].present?
+            results = filter_by_name(all_posters, params[:name])
         end
 
         if params[:min_price]
@@ -24,7 +22,7 @@ class Poster < ApplicationRecord
         if params[:max_price]
             results = filter_by_max(all_posters, params[:max_price])
         end
-        # return results
+
         results
     end
 
@@ -40,5 +38,3 @@ class Poster < ApplicationRecord
         posters.where("price >= #{max_price}")
     end
 end
-# Poster.maximum(:price)
-# Poster.minimum(:price)

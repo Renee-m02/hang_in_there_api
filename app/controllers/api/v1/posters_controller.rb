@@ -1,6 +1,5 @@
 class Api::V1::PostersController < ApplicationController
     def index
-        # posters = Poster.all
         if params[:sort]
             posters = Poster.sort_by_creation(params[:sort])
         elsif params[:name] || params[:min_price] || params[:max_price]
