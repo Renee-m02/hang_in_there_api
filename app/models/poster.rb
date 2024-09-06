@@ -31,10 +31,10 @@ class Poster < ApplicationRecord
     end
 
     def self.filter_by_min(posters, min_price)
-        posters.where("price <= #{min_price}")
+        posters.where("price >= #{min_price}")
     end
 
     def self.filter_by_max(posters, max_price)
-        posters.where("price >= #{max_price}")
+        posters.where("price <= #{max_price}")
     end
 end
