@@ -1,24 +1,40 @@
 # Hang in There API
 
-### Abstract:
-[//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
+### Project Description:
+
+Week two of Turing we built a front end application for motivational posters. Week three we built a back end API database that a front end could use rather than having to hardcode our poster data. How cool is that? We built CRUD functionality in our back end API application. 
 
 
 ### Installation Instructions:
-[//]: <> (What steps does a person have to take to get your app cloned down and running?)
-
+- Fork this repository.
+- Clone down repostitory.
+Have Fun!
 
 ### Context:
-[//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
+We had less than a week to complete the project.
 
 
 ### Contributors:
-[//]: <> (Who worked on this application? Link to your GitHub. Consider also providing LinkedIn link)
+-  [Candice Cirbo](www.linkedin.com/in/candicecirbo)
+-  [Renee Messersmith](www.linkedin.com/in/reneemessersmith)
 
 
 ### Learning Goals:
-[//]: <> (What were the learning goals of this project? What tech did you work with?)
+Expose an API
+Use serializers to format JSON responses
+Test API exposure
+Use SQL and AR to gather data
+Breaking down a problem into small steps
+Practice individual research (articles, videos, mentors)
 
 
 ### Wins + Challenges:
-[//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
+- Navigating the Rails application
+- Working with Postman and Rails application
+- Learning what code goes where, in models/controllers or serializers
+- Testing was challenging in some areas
+
+- We completed the project on time
+- We worked well together, even with significant time differences
+- Learned how to craft an API
+- We had fun!
