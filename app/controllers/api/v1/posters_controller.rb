@@ -7,7 +7,7 @@ class Api::V1::PostersController < ApplicationController
         else
             posters = Poster.all
         end
-        render json: PosterSerializer.new(posters, meta: { count: Poster.count })
+        render json: PosterSerializer.new(posters, meta: { count: posters.count })
     end
 
     def show
