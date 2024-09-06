@@ -10,9 +10,8 @@ class Poster < ApplicationRecord
 
     def self.find_by_params(params)
         all_posters = all
-
         if params[:name]
-            results = filter_by_name(all_posters, params[:name])
+           results = filter_by_name(all_posters, params[:name])
         end
 
         if params[:min_price]
@@ -22,10 +21,11 @@ class Poster < ApplicationRecord
         if params[:max_price]
             results = filter_by_max(all_posters, params[:max_price])
         end
-
         results
     end
 
+    private
+    
     def self.filter_by_name(posters, name)
         posters.where("name ILIKE '%#{name}%'").order(:name)
     end

@@ -1,12 +1,12 @@
 class Api::V1::PostersController < ApplicationController
     def index
-        if params[:sort]
-            posters = Poster.sort_by_creation(params[:sort])
-        elsif params[:name] || params[:min_price] || params[:max_price]
-            posters = Poster.find_by_params(params)
-        else
-            posters = Poster.all
-        end
+        posters = if params[:sort]
+                    Poster.sort_by_creation(params[:sort])
+                  elsif filter_params.present?
+                    Poster.find_by_params(filter_params)
+                  else
+                    Poster.all
+                  end
         render json: PosterSerializer.new(posters, meta: { count: posters.count })
     end
 
@@ -18,7 +18,7 @@ class Api::V1::PostersController < ApplicationController
     def create
         new_poster = Poster.create(poster_params)
         render json: PosterSerializer.new(new_poster), status: 201
-    end
+    end 
 
     def update
         updated_poster = Poster.update(params[:id], poster_params)
@@ -33,5 +33,9 @@ class Api::V1::PostersController < ApplicationController
     
     def poster_params
         params.require(:poster).permit(:name, :description, :price, :year, :vintage,  :img_url)
+    end
+
+    def filter_params
+        params.permit(:name, :min_price, :max_price)
     end
 end
