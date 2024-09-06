@@ -1,24 +1,24 @@
-# README
+# Hang in There API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Abstract:
+[//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
 
-Things you may want to cover:
 
-* Ruby version
+### Installation Instructions:
+[//]: <> (What steps does a person have to take to get your app cloned down and running?)
 
-* System dependencies
 
-* Configuration
+### Context:
+[//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
 
-* Database creation
 
-* Database initialization
+### Contributors:
+[//]: <> (Who worked on this application? Link to your GitHub. Consider also providing LinkedIn link)
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+### Learning Goals:
+[//]: <> (What were the learning goals of this project? What tech did you work with?)
 
-* Deployment instructions
 
-* ...
+### Wins + Challenges:
+[//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
