@@ -1,31 +1,36 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
 Poster.destroy_all
 
-Poster.create(name: "REGRET",
-               description: "Hard work rarely pays off.",
-               price: 89.00,
+Poster.create(name: "DETERMINATION",
+               description: "Hard work rarely pays off. When you have a dream, you've got to grab it and never let go.",
+               price: 48.00,
                year: 2018,
                vintage: true,
                img_url:  "https://plus.unsplash.com/premium_photo-1661293818249-fddbddf07a5d")
 
-Poster.create(name: "FAILURE",
-               description: "Why bother trying? It's probably not worth it.",
+Poster.create(name: "BELIEVE",
+               description: "You are braver than you believe, stronger than you seem and smarter than you think.",
                price: 68.00,
                year: 2019,
                vintage: true,
                img_url:  "https://images.unsplash.com/photo-1620401537439-98e94c004b0d")
 
-Poster.create(name: "MEDIOCRITY",
-               description: "Dreams are just that—dreams.",
+Poster.create(name: "KINDNESS",
+               description: "Inspiration comes from within yourself. One has to be positive. When you're positive, good things happen.",
                price: 127.00,
                year: 2021,
+               vintage: false,
+               img_url:  "https://images.unsplash.com/photo-1551993005-75c4131b6bd8")
+
+Poster.create(name: "WISDOM",
+               description: "Don't wait. The time will never be just right.",
+               price: 200.00,
+               year: 2022,
+               vintage: true,
+               img_url:  "https://images.unsplash.com/photo-1551993005-75c4131b6bd8")
+
+Poster.create(name: "CONFIDENCE",
+               description: "Never bend your head. Always hold it high. Look the world straight in the eye.",
+               price: 12.00,
+               year: 2010,
                vintage: false,
                img_url:  "https://images.unsplash.com/photo-1551993005-75c4131b6bd8")
